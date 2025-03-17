@@ -20,7 +20,7 @@ process_files () {
     rm -r $PARENT_DATA_DIR/$SYSTEM/fs $PARENT_DATA_DIR/$SYSTEM/UploadFlow.json $PARENT_DATA_DIR/$SYSTEM/UploadFlow 
     
     # Run log2timeline and generate Plaso file
-    docker exec -i timesketch-worker /bin/bash -c "log2timeline.py --status_view window --storage_file /usr/share/timesketch/upload/plaso/$SYSTEM.plaso /usr/share/timesketch/upload/$SYSTEM"
+    docker exec -i timesketch-worker /bin/bash -c "log2timeline.py --status_view window --parsers '!filestat' --storage_file /usr/share/timesketch/upload/plaso/$SYSTEM.plaso /usr/share/timesketch/upload/$SYSTEM"
     
     # Wait for file to become available
     sleep 40
